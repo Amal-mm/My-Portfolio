@@ -18,35 +18,43 @@
         }
 
         :root {
-            /* Light Mode */
-            --bg-primary: #f8f9fa;
+            /* Light Mode - Soft & Calm Feminine */
+            --bg-primary: #faf8fc;
             --bg-secondary: #ffffff;
-            --bg-accent: #e8f4f8;
-            --text-primary: #2d3748;
-            --text-secondary: #4a5568;
-            --text-muted: #718096;
-            --accent-primary: #5b9aa9;
-            --accent-secondary: #7ab8c7;
-            --accent-hover: #4a8897;
-            --border-color: #e2e8f0;
-            --shadow: rgba(0, 0, 0, 0.08);
-            --shadow-hover: rgba(0, 0, 0, 0.15);
+            --bg-accent: #f5f0f9;
+            --text-primary: #3d3448;
+            --text-secondary: #6b5d7a;
+            --text-muted: #9a8ba8;
+            --accent-primary: #b69ed3;
+            --accent-secondary: #d4a5d8;
+            --accent-tertiary: #a8c5d6;
+            --accent-hover: #a088c4;
+            --border-color: #ebe4f0;
+            --shadow: rgba(182, 158, 211, 0.12);
+            --shadow-hover: rgba(182, 158, 211, 0.2);
+            --gradient-1: #b69ed3;
+            --gradient-2: #d4a5d8;
+            --gradient-3: #c9b8d6;
         }
 
         [data-theme="dark"] {
-            /* Dark Mode */
-            --bg-primary: #1a202c;
-            --bg-secondary: #2d3748;
-            --bg-accent: #2c3e50;
-            --text-primary: #e2e8f0;
-            --text-secondary: #cbd5e0;
-            --text-muted: #a0aec0;
-            --accent-primary: #7ab8c7;
-            --accent-secondary: #5b9aa9;
-            --accent-hover: #8bc9d8;
-            --border-color: #4a5568;
-            --shadow: rgba(0, 0, 0, 0.3);
-            --shadow-hover: rgba(0, 0, 0, 0.5);
+            /* Dark Mode - Soft & Elegant */
+            --bg-primary: #251b2e;
+            --bg-secondary: #332843;
+            --bg-accent: #443456;
+            --text-primary: #f0e9f5;
+            --text-secondary: #d9cfe3;
+            --text-muted: #b8a8c8;
+            --accent-primary: #c4aed9;
+            --accent-secondary: #d9b8dd;
+            --accent-tertiary: #b5cdd9;
+            --accent-hover: #d4bee8;
+            --border-color: #4a3d59;
+            --shadow: rgba(196, 174, 217, 0.15);
+            --shadow-hover: rgba(196, 174, 217, 0.25);
+            --gradient-1: #c4aed9;
+            --gradient-2: #d9b8dd;
+            --gradient-3: #cbbdd6;
         }
 
         body {
@@ -76,13 +84,15 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(
-                45deg,
+                135deg,
                 var(--bg-primary) 0%,
-                var(--bg-accent) 50%,
+                var(--bg-accent) 30%,
+                rgba(182, 158, 211, 0.03) 50%,
+                rgba(212, 165, 216, 0.03) 70%,
                 var(--bg-primary) 100%
             );
             background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
+            animation: gradientShift 20s ease infinite;
         }
 
         @keyframes gradientShift {
@@ -96,7 +106,7 @@
             position: absolute;
             border-radius: 50%;
             pointer-events: none;
-            opacity: 0.6;
+            opacity: 0.3;
             animation: float linear infinite;
         }
 
@@ -106,10 +116,10 @@
                 opacity: 0;
             }
             10% {
-                opacity: 0.6;
+                opacity: 0.3;
             }
             90% {
-                opacity: 0.6;
+                opacity: 0.3;
             }
             100% {
                 transform: translateY(-100vh) scale(1);
@@ -120,7 +130,7 @@
         /* Geometric Shapes */
         .shape {
             position: absolute;
-            opacity: 0.1;
+            opacity: 0.06;
             animation: rotate 20s linear infinite;
         }
 
@@ -135,8 +145,8 @@
             width: 100px;
             height: 100px;
             border: 3px solid var(--accent-primary);
-            border-radius: 20px;
-            animation: rotate 15s linear infinite, float-shape 8s ease-in-out infinite;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: rotate 15s linear infinite, float-shape 8s ease-in-out infinite, morphShape 10s ease-in-out infinite;
         }
 
         .shape-2 {
@@ -154,9 +164,19 @@
             left: 20%;
             width: 60px;
             height: 60px;
-            border: 3px solid var(--accent-primary);
+            border: 3px solid var(--accent-tertiary);
             transform: rotate(45deg);
             animation: rotate 12s linear infinite, float-shape 6s ease-in-out infinite;
+            border-radius: 20%;
+        }
+
+        @keyframes morphShape {
+            0%, 100% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            }
+            50% {
+                border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+            }
         }
 
         @keyframes float-shape {
@@ -174,7 +194,7 @@
             width: 100%;
             height: 150px;
             overflow: hidden;
-            opacity: 0.1;
+            opacity: 0.06;
         }
 
         .wave {
@@ -187,12 +207,20 @@
                 to right,
                 transparent,
                 var(--accent-primary),
+                var(--accent-secondary),
                 transparent
             );
             animation: wave 8s linear infinite;
         }
 
         .wave:nth-child(2) {
+            background: linear-gradient(
+                to right,
+                transparent,
+                var(--accent-secondary),
+                var(--accent-tertiary),
+                transparent
+            );
             animation: wave 12s linear infinite reverse;
             opacity: 0.5;
         }
@@ -200,6 +228,54 @@
         @keyframes wave {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
+        }
+
+        /* Sparkle Effect */
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            animation: sparkle 2s ease-in-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { 
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+        /* Hearts Animation */
+        .heart {
+            position: absolute;
+            font-size: 16px;
+            opacity: 0.15;
+            animation: heartFloat 15s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes heartFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.15;
+            }
+            90% {
+                opacity: 0.15;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(180deg);
+                opacity: 0;
+            }
         }
 
         /* Grid Pattern */
@@ -213,7 +289,7 @@
                 linear-gradient(var(--border-color) 1px, transparent 1px),
                 linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
             background-size: 50px 50px;
-            opacity: 0.05;
+            opacity: 0.03;
             animation: gridMove 20s linear infinite;
         }
 
@@ -265,44 +341,70 @@
             display: none;
         }
 
-        /* Header Styles */
+        /* Header Styles - Sidebar */
         header {
-            background-color: var(--bg-secondary);
-            box-shadow: 0 2px 10px var(--shadow);
-            position: sticky;
+            position: fixed;
+            right: 0;
             top: 0;
+            height: 100vh;
+            width: 280px;
+            background-color: var(--bg-secondary);
+            box-shadow: -2px 0 15px var(--shadow);
             z-index: 1000;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem 0;
+        }
+
+        [dir="ltr"] header {
+            right: auto;
+            left: 0;
+            box-shadow: 2px 0 15px var(--shadow);
         }
 
         nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 1.5rem;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
+            flex-direction: column;
+            height: 100%;
+            padding: 0;
+            max-width: 100%;
+            margin: 0;
         }
 
         .logo {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: bold;
-            color: var(--accent-primary);
-            transition: color 0.3s ease;
-            z-index: 1001;
+            background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all 0.3s ease;
+            text-align: center;
+            padding: 0 2rem;
+            margin-bottom: 3rem;
         }
 
-        /* Hamburger Menu */
+        /* Hamburger Menu for Mobile */
         .hamburger {
             display: none;
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
             flex-direction: column;
             gap: 4px;
-            background: none;
+            background: var(--bg-secondary);
             border: none;
             cursor: pointer;
-            padding: 8px;
+            padding: 12px;
             z-index: 1001;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px var(--shadow);
+        }
+
+        [dir="ltr"] .hamburger {
+            right: auto;
+            left: 1.5rem;
         }
 
         .hamburger span {
@@ -328,48 +430,75 @@
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            flex-direction: column;
+            gap: 0;
             list-style: none;
-            align-items: center;
+            align-items: stretch;
+            flex: 1;
+            padding: 0 1.5rem;
+        }
+
+        .nav-links li {
+            width: 100%;
         }
 
         .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            transition: color 0.2s ease;
+            transition: all 0.3s ease;
             font-weight: 500;
+            padding: 1rem 1.5rem;
+            display: block;
+            border-radius: 12px;
             position: relative;
-            white-space: nowrap;
+            font-size: 1.05rem;
         }
 
-        .nav-links a::after {
+        .nav-links a::before {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent-primary);
-            transition: width 0.3s ease;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 0;
+            background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
+            transition: height 0.3s ease;
+            border-radius: 2px;
         }
 
-        .nav-links a:hover::after,
-        .nav-links a:focus::after {
-            width: 100%;
+        [dir="ltr"] .nav-links a::before {
+            right: auto;
+            left: 0;
         }
 
         .nav-links a:hover,
         .nav-links a:focus {
+            background-color: var(--bg-accent);
             color: var(--accent-primary);
             outline: none;
+            transform: translateX(-5px);
         }
 
-        /* Controls */
+        [dir="ltr"] .nav-links a:hover,
+        [dir="ltr"] .nav-links a:focus {
+            transform: translateX(5px);
+        }
+
+        .nav-links a:hover::before,
+        .nav-links a:focus::before {
+            height: 60%;
+        }
+
+        /* Controls in Sidebar */
         .controls {
             display: flex;
             gap: 0.75rem;
             align-items: center;
-            z-index: 1001;
+            justify-content: center;
+            padding: 1.5rem;
+            margin-top: auto;
+            border-top: 1px solid var(--border-color);
         }
 
         .toggle-btn {
@@ -399,6 +528,16 @@
         }
 
         /* Hero Section */
+        main {
+            margin-right: 280px;
+            transition: margin 0.3s ease;
+        }
+
+        [dir="ltr"] main {
+            margin-right: 0;
+            margin-left: 280px;
+        }
+
         .hero {
             max-width: 1200px;
             margin: 0 auto;
@@ -409,8 +548,18 @@
         .hero h1 {
             font-size: clamp(2rem, 5vw, 3rem);
             margin-bottom: 1rem;
-            color: var(--text-primary);
-            transition: color 0.3s ease;
+            background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2), var(--gradient-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all 0.3s ease;
+            animation: gradientText 8s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes gradientText {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .hero .highlight {
@@ -446,15 +595,16 @@
         }
 
         .btn-primary {
-            background-color: var(--accent-primary);
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
             color: white;
+            box-shadow: 0 4px 15px rgba(182, 158, 211, 0.25);
         }
 
         .btn-primary:hover,
         .btn-primary:focus {
-            background-color: var(--accent-hover);
+            background: linear-gradient(135deg, var(--accent-hover), var(--accent-primary));
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px var(--shadow);
+            box-shadow: 0 8px 25px rgba(182, 158, 211, 0.35);
             outline: 2px solid var(--accent-primary);
             outline-offset: 2px;
         }
@@ -525,18 +675,42 @@
         .skill-card {
             background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-accent) 100%);
             padding: 1.5rem;
-            border-radius: 15px;
+            border-radius: 20px;
             text-align: center;
-            box-shadow: 0 5px 20px var(--shadow);
+            box-shadow: 0 8px 25px var(--shadow);
             transition: all 0.3s ease;
-            border: 2px solid var(--border-color);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(168, 85, 247, 0.1),
+                transparent
+            );
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+
+        .skill-card:hover::before {
+            transform: rotate(45deg) translate(50%, 50%);
         }
 
         .skill-card:hover,
         .skill-card:focus-within {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 12px 35px var(--shadow-hover);
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 40px var(--shadow-hover);
             border-color: var(--accent-primary);
+            background: linear-gradient(135deg, var(--bg-accent) 0%, rgba(168, 85, 247, 0.1) 100%);
         }
 
         .skill-icon {
@@ -764,48 +938,41 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            header {
+                transform: translateX(100%);
+                box-shadow: -5px 0 20px var(--shadow);
+            }
+
+            [dir="ltr"] header {
+                transform: translateX(-100%);
+                box-shadow: 5px 0 20px var(--shadow);
+            }
+
+            header.active {
+                transform: translateX(0);
+            }
+
             .hamburger {
                 display: flex;
             }
 
+            main {
+                margin-right: 0;
+                margin-left: 0;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+                margin-bottom: 2rem;
+            }
+
             .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 70%;
-                max-width: 300px;
-                background-color: var(--bg-secondary);
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 5rem 2rem 2rem;
-                gap: 1.5rem;
-                box-shadow: -2px 0 10px var(--shadow);
-                transition: right 0.3s ease;
-            }
-
-            [dir="rtl"] .nav-links {
-                right: auto;
-                left: -100%;
-                transition: left 0.3s ease;
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            [dir="rtl"] .nav-links.active {
-                left: 0;
-            }
-
-            .nav-links li {
-                width: 100%;
+                padding: 0 1rem;
             }
 
             .nav-links a {
-                display: block;
-                padding: 0.5rem 0;
-                font-size: 1.1rem;
+                font-size: 1rem;
+                padding: 0.9rem 1.2rem;
             }
 
             .controls {
@@ -955,15 +1122,16 @@
 
     <!-- Actual Content -->
     <div id="content" class="content-hidden">
+        <!-- Mobile Hamburger Menu -->
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
         <header>
             <nav>
                 <div class="logo">Amal Alqahtani</div>
-                
-                <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
 
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#home" data-ar="الرئيسية" data-en="Home" onclick="closeMenu()">الرئيسية</a></li>
@@ -1296,30 +1464,45 @@ I continuously enhance my skills, stay up to date with the latest tools and tech
     </div>
 
     <script>
-        // Create Floating Particles
+        // Create Floating Particles with multiple colors
         function createParticles() {
             const bgAnimation = document.querySelector('.bg-animation');
-            const particleCount = 15;
+            const particleCount = 12;
+            const colors = ['var(--accent-primary)', 'var(--accent-secondary)', 'var(--accent-tertiary)'];
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.classList.add('particle');
                 
-                const size = Math.random() * 8 + 3;
+                const size = Math.random() * 6 + 3;
                 const startX = Math.random() * 100;
-                const duration = Math.random() * 10 + 15;
-                const delay = Math.random() * 5;
+                const duration = Math.random() * 15 + 20;
+                const delay = Math.random() * 8;
+                const color = colors[Math.floor(Math.random() * colors.length)];
                 
                 particle.style.width = `${size}px`;
                 particle.style.height = `${size}px`;
                 particle.style.left = `${startX}%`;
-                particle.style.background = `var(--accent-primary)`;
+                particle.style.background = color;
                 particle.style.animationDuration = `${duration}s`;
                 particle.style.animationDelay = `${delay}s`;
                 
                 bgAnimation.appendChild(particle);
             }
         }
+
+        // Create Sparkles on hover (less frequent)
+        document.addEventListener('mousemove', function(e) {
+            if (Math.random() > 0.97) {
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+                sparkle.style.left = e.clientX + 'px';
+                sparkle.style.top = e.clientY + 'px';
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => sparkle.remove(), 2000);
+            }
+        });
 
         // Loading Animation
         window.addEventListener('load', function () {
@@ -1332,26 +1515,25 @@ I continuously enhance my skills, stay up to date with the latest tools and tech
 
         // Mobile Menu Toggle
         function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
+            const header = document.querySelector('header');
             const hamburger = document.getElementById('hamburger');
-            navLinks.classList.toggle('active');
+            header.classList.toggle('active');
             hamburger.classList.toggle('active');
         }
 
         function closeMenu() {
-            const navLinks = document.getElementById('navLinks');
+            const header = document.querySelector('header');
             const hamburger = document.getElementById('hamburger');
-            navLinks.classList.remove('active');
+            header.classList.remove('active');
             hamburger.classList.remove('active');
         }
 
         // Close menu when clicking outside
         document.addEventListener('click', function(event) {
-            const navLinks = document.getElementById('navLinks');
+            const header = document.querySelector('header');
             const hamburger = document.getElementById('hamburger');
-            const nav = document.querySelector('nav');
             
-            if (!nav.contains(event.target) && navLinks.classList.contains('active')) {
+            if (!header.contains(event.target) && !hamburger.contains(event.target) && header.classList.contains('active')) {
                 closeMenu();
             }
         });
