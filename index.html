@@ -439,9 +439,9 @@
             background: var(--bg-secondary);
             border: 2px solid var(--border-color);
             cursor: pointer;
-            padding: 12px;
+            padding: 10px;
             z-index: 999;
-            border-radius: 12px;
+            border-radius: 10px;
             box-shadow: 0 4px 15px var(--shadow);
             transition: all 0.3s ease;
         }
@@ -459,8 +459,8 @@
 
         .hamburger span {
             display: block;
-            width: 25px;
-            height: 3px;
+            width: 22px;
+            height: 2.5px;
             background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
             transition: all 0.3s ease;
             border-radius: 2px;
@@ -1014,11 +1014,18 @@
             .hamburger {
                 top: 1rem;
                 right: 1rem;
-                padding: 10px;
+                padding: 8px;
+                border-radius: 8px;
             }
 
             [dir="ltr"] .hamburger {
                 left: 1rem;
+            }
+
+            .hamburger span {
+                width: 20px;
+                height: 2px;
+                gap: 3px;
             }
 
             .logo {
@@ -1124,6 +1131,22 @@
             header {
                 width: 80%;
                 max-width: 280px;
+            }
+
+            .hamburger {
+                padding: 7px;
+                border-radius: 8px;
+                top: 0.8rem;
+                right: 0.8rem;
+            }
+
+            [dir="ltr"] .hamburger {
+                left: 0.8rem;
+            }
+
+            .hamburger span {
+                width: 18px;
+                height: 2px;
             }
 
             .logo {
@@ -1490,7 +1513,7 @@ I continuously enhance my skills, stay up to date with the latest tools and tech
                     </article>
 
                     <article class="project-card">
-                       
+                        
                         <h3 data-ar="Fanar – Campus Navigation" data-en="Fanar – Campus Navigation">Fanar – Campus
                             Navigation</h3>
                         <p data-ar="تطبيق ويب يساعد الطلاب والزوار على التنقل داخل الحرم الجامعي بسهولة، من خلال واجهة تفاعلية توضح المواقع والمسارات والخدمات الأساسية."
@@ -1506,7 +1529,7 @@ I continuously enhance my skills, stay up to date with the latest tools and tech
                     </article>
 
                     <article class="project-card">
-                       
+                        <div class="project-icon" aria-hidden="true"></div>
                         <h3 data-ar="UX Prototype" data-en="UX Prototype">UX Prototype</h3>
                         <p data-ar="تصميم نموذج أولي (Prototype) لتحسين تجربة المستخدم في نظام جامعي، مع التركيز على سهولة الاستخدام، وضوح الواجهات، وتحسين رحلة المستخدم."
                             data-en="Designing a prototype to improve user experience in a university system, focusing on ease of use, interface clarity, and enhancing the user journey.">
@@ -1565,7 +1588,7 @@ I continuously enhance my skills, stay up to date with the latest tools and tech
             <section id="contact">
                 <h2 class="section-title" data-ar="تواصل معي" data-en="Contact Me">تواصل معي</h2>
                 <p class="contact-intro"
-                    data-ar="أنا دائماً منفتحة على الفرص الجديدة والمشاريع الإبداعية. لا تتردد في التواصل!"
+                    data-ar="أنا دائماً متحمسه على الفرص الجديدة والمشاريع الإبداعية. لا تتردد في التواصل!"
                     data-en="I am always open to new opportunities and creative projects. Feel free to get in touch!">
                     أنا دائماً منفتحة على الفرص الجديدة والمشاريع الإبداعية. لا تتردد في التواصل!
                 </p>
